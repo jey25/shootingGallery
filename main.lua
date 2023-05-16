@@ -39,4 +39,31 @@ function distanceBetween(x1 , y1 , x2 , y2)
 end
 
 
+-- 토네이도 스크립트 
+local rs = game:GetService("RunService")
+
+local model = script.Parent
+local mMain = require(model.ModuleScript)
+local bridge = model.Bridge
+
+local distance = 80
+local damage = .25
+
+rs.Heartbeat:Connect(function()
+	--mMain:TargetFolder(workspace.Folder, distance)
+	--mMain:TargetFolder(workspace.Folder2, distance)
+	--mMain:TargetChar(distance)
+	--mMain:TargetPlayer(distance)
+end)
+
+bridge.TargetFolder.Event:Connect(function(part)
+	-- todo
+end)
+bridge.TargetChar.Event:Connect(function(char)
+	-- todo
+end)
+
+bridge.TargetPlayer.Event:Connect(function(char)
+	-- todo
+end)
 
