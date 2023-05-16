@@ -67,3 +67,50 @@ bridge.TargetPlayer.Event:Connect(function(char)
 	-- todo
 end)
 
+
+--토네이도 모듈 스크립트 
+
+local model = script.Parent
+local core = model.Core
+
+local mGrivity = require(script.Gravity)
+local bridge = model.Bridge
+
+local module = {}
+
+function module:TargetFolder(folder, distance)
+	for i, v in pairs(workspace:GetDescendants()) do
+		if v:IsDescendantOf(folder) then
+			if mGrivity:InPart(v, core, distance) then
+				mGrivity:Pull(v, core)
+				bridge.TargetFolder:Fire(v)	
+			end
+		end
+	end
+end
+
+function module:TargetChar(distance)
+	for i, v in pairs(workspace:GetDescendants()) do
+		local char = v.Parent
+		if char:FindFirstChild("Humanoid") then
+			if mGrivity:InPart(v, core, distance) then
+				mGrivity:Pull(v, core)
+				bridge.TargetChar:Fire(char)				
+			end
+		end
+	end
+end
+
+function module:TargetPlayer(distance)
+	for i, v in pairs(workspace:GetDescendants()) do
+		local char =  v.Parent
+		if game.Players:GetPlayerFromCharacter(char) then
+			if mGrivity:InPart(v, core, distance) then
+				mGrivity:Pull(v, core)
+				bridge.TargetPlayer:Fire(char)	
+			end
+		end
+	end
+end
+
+return module
