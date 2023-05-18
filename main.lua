@@ -188,3 +188,26 @@ while true  do
 	createBall()
 	wait(0.5)
 end
+
+
+--공에 닿았을 때 스코어 증가
+
+local ball = script.Parent
+local Enabled = true
+
+
+local function onTouched(object)
+	ball.BrickColor = BrickColor.Random()
+	
+	local player = game.Players:GetPlayerFromCharacter(object.Parent)
+	if player and Enabled then
+		--print("score up")
+		Enabled = false
+		player.leaderstats.score.Value = player.leaderstats.score.Value + 100
+	end
+	wait(1)
+	Enabled = true
+end
+
+ball.Touched:Connect(onTouched)
+
