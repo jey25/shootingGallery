@@ -125,3 +125,15 @@ local control = module:GetControls()
 
 --control:Disable() -- 컨트롤 권한 끄기
 --control:Enable() -- 컨트롤 권한 켜기
+
+
+--캐릭터 앵커
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+if not character.PrimaryPart then
+	character:GetPropertyChangedSignal("PrimaryPart"):Wait()
+end
+
+character.PrimaryPart.Anchored = true 
