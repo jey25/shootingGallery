@@ -137,3 +137,28 @@ if not character.PrimaryPart then
 end
 
 character.PrimaryPart.Anchored = true 
+
+
+--점수판 (leaderboard) 만들기 > serverscriptservice
+
+local function onPlayerjoin(player)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	leaderstats.Parent = player
+	
+	local score = Instance.new("IntValue")
+	score.Name = "score"
+	score.Value = 5
+	score.Parent = leaderstats
+	
+	local hp = Instance.new("IntValue")
+	hp.Name = "HP"
+	hp.Value = 100
+	hp.Parent = leaderstats
+	
+	wait(5)
+	player.leaderstats.score.Value = player.leaderstats.score.Value + 5
+	
+end
+
+game.Players.PlayerAdded:Connect(onPlayerjoin)
