@@ -173,3 +173,18 @@ local ball2 = ball:Clone()
 ball2.BrickColor = BrickColor.Random()
 ball2.Position = Vector3.new(math.random(-100, 100), 400, math.random(-100, 100))
 ball2.Parent = ball.Parent
+
+
+--createBall
+
+local function createBall()
+	local ball = Instance.new("Part", workspace)
+	ball.Shape = "Ball"
+	ball.Position = Vector3.new(math.random(-100, 100), 400, math.random(-100, 100))
+	ball.BrickColor = BrickColor.Random()
+end
+
+while true  do	
+	createBall()
+	wait(0.5)
+end
