@@ -162,3 +162,14 @@ local function onPlayerjoin(player)
 end
 
 game.Players.PlayerAdded:Connect(onPlayerjoin)
+
+
+-- rainBall
+local ball = script.Parent
+
+wait(1)
+
+local ball2 = ball:Clone()
+ball2.BrickColor = BrickColor.Random()
+ball2.Position = Vector3.new(math.random(-100, 100), 400, math.random(-100, 100))
+ball2.Parent = ball.Parent
