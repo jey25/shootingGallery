@@ -191,7 +191,6 @@ end
 
 
 --공에 닿았을 때 스코어 증가
-
 local ball = script.Parent
 local Enabled = true
 
